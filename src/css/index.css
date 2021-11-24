@@ -1,5 +1,10 @@
+@import-normalize;
+
+
+
 body {
-  background-color: rgb(85, 3, 3);
+  background-color: rgb(143, 129, 129);
+  height: 100vh;
 }
 
 
