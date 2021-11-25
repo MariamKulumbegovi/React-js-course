@@ -15,7 +15,7 @@ export const Home=({user, title,bio,age, again})=>{
 
     return(
         <>
-        <div className="container is-flex is-flex-direction-column">
+        <div className="container mt3 is-flex is-flex-direction-column">
             {title && <code >title { title} </code>}
             <em>user: {formatUser(user)} </em>
             <em hidden={!bio}>bio: {user.bio} </em>
