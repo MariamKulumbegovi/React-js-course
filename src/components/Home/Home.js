@@ -1,4 +1,6 @@
 import PropTypes from 'prop-types'
+import { useEffect } from 'react'
+import { useState } from 'react'
 import { logGroup } from "../../helpers/logger"
 import { formatUser } from "../../helpers/User"
 import { UserModel } from "../../models/userModel"
@@ -7,7 +9,9 @@ import { UserModel } from "../../models/userModel"
 
 export const Home=({user, title,bio,age, again})=>{
 
-   logGroup(user, "title",bio,age, )
+  
+  
+
 
     return(
         <>
@@ -19,6 +23,7 @@ export const Home=({user, title,bio,age, again})=>{
             
            
             <em>{formatUser(again)} </em>
+            
         </div>
         </>
     )
