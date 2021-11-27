@@ -1,3 +1,6 @@
+import { Link, NavLink } from "react-router-dom"
+import { HOME_PATH, LOGIN_PATH, PROTECTED_PAGE_PATH, REGISTER_PATH } from "../../constants/routes"
+
 
 export const Header = () => {
 
@@ -5,9 +8,9 @@ export const Header = () => {
         <>
         <nav className="navbar" role="navigation" aria-label="main navigation">
   <div className="navbar-brand">
-    <a className="navbar-item" href="https://bulma.io">
+    <Link className="navbar-item" to="https://bulma.io">
       <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28"/>
-    </a>
+    </Link>
 
     <a role="button" className="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
       <span aria-hidden="true"></span>
@@ -18,33 +21,33 @@ export const Header = () => {
 
   <div id="navbarBasicExample" className="navbar-menu">
     <div className="navbar-start">
-      <a className="navbar-item">
+      <NavLink to={HOME_PATH} className="navbar-item">
         Home
-      </a>
+      </NavLink>
 
-      <a className="navbar-item">
-        Documentation
-      </a>
+      <NavLink to={PROTECTED_PAGE_PATH} className="navbar-item">
+        Protected Page
+      </NavLink>
 
       <div className="navbar-item has-dropdown is-hoverable">
-        <a className="navbar-link">
+        <NavLink to="#" className="navbar-link">
           More
-        </a>
+        </NavLink>
 
         <div className="navbar-dropdown">
-          <a className="navbar-item">
+          <NavLink to="#" className="navbar-item">
             About
-          </a>
-          <a className="navbar-item">
+          </NavLink>
+          <NavLink to="#" className="navbar-item">
             Jobs
-          </a>
-          <a className="navbar-item">
+          </NavLink>
+          <NavLink to="#" className="navbar-item">
             Contact
-          </a>
+          </NavLink>
           <hr className="navbar-divider"/>
-          <a className="navbar-item">
+          <NavLink to="#" className="navbar-item">
             Report an issue
-          </a>
+          </NavLink>
         </div>
       </div>
     </div>
@@ -52,12 +55,12 @@ export const Header = () => {
     <div className="navbar-end">
       <div className="navbar-item">
         <div className="buttons">
-          <a className="button is-primary">
+          <Link to={REGISTER_PATH} className="button is-primary">
             <strong>Sign up</strong>
-          </a>
-          <a className="button is-light">
+          </Link>
+          <Link to={LOGIN_PATH} className="button is-light">
             Log in
-          </a>
+          </Link>
         </div>
       </div>
     </div>

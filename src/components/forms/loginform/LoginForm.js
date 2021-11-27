@@ -1,8 +1,12 @@
 
-import { useEffect, useState } from "react"
+import {useState } from "react"
+import { Switch } from "react-router"
 import { EmailInput } from "../../atoms"
 import { PasswordInput } from "../../atoms"
 import styles from './LoginForm.module.css'
+
+
+
 export const LoginForm=()=> {
 
     const [value,setValue]=useState("")
@@ -31,7 +35,7 @@ export const LoginForm=()=> {
                 <div className="field">
                 <PasswordInput/>
                 </div>
-                <div className="control">
+                {/* <div className="control">
                 <label htmlFor="marital status" className="label">Choose your marital status</label>
                 <div className="select">
                     <select name="marital status" value={value} onChange={({target})=>setValue(target.value)} >
@@ -40,7 +44,7 @@ export const LoginForm=()=> {
                         <option value="divorced">Divorced</option>
                     </select>
                     </div>
-                </div>
+                </div> */}
                 <div className={`field ${styles[`mt30`]}`}>
                 <p className="control">
                     <button className="button is-success" type="submit">
