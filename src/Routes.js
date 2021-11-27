@@ -18,9 +18,9 @@ export const Routes=()=>{
             <Route path={route.PROTECTED_PAGE_PATH}  >
                 <SecureComponent>
                     <ProtectedPage/>
-                   
                 </SecureComponent>
             </Route>
+            
         </Switch>
       
     )
