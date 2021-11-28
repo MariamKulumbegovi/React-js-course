@@ -1,8 +1,38 @@
+
 import { Link, NavLink } from "react-router-dom"
 import { HOME_PATH, LOGIN_PATH, PROTECTED_PAGE_PATH, REGISTER_PATH } from "../../constants/routes"
+import {  useAuthContext } from "../../providers/authprovider/AuthProvider"
 
 
 export const Header = () => {
+
+  const {loggedIn,logOut}=useAuthContext()
+
+  const renderGuestLinks=()=>{
+      return (
+        <div className="navbar-item">
+        <div className="buttons">
+          <Link to={REGISTER_PATH} className="button is-primary">
+            <strong>Sign up</strong>
+          </Link>
+          <Link to={LOGIN_PATH} className="button is-light">
+            Log in
+          </Link>
+        </div>
+      </div>
+      )
+  }
+  const renderUserLinks=()=>{
+    return (
+      <div className="navbar-item">
+      <div className="buttons">
+        <button  className="button is-primary" onClick={logOut}>
+          <strong>Log Out</strong>
+        </button>
+      </div>
+    </div>
+    )
+}
 
     return (
         <>
@@ -53,19 +83,11 @@ export const Header = () => {
     </div>
 
     <div className="navbar-end">
-      <div className="navbar-item">
-        <div className="buttons">
-          <Link to={REGISTER_PATH} className="button is-primary">
-            <strong>Sign up</strong>
-          </Link>
-          <Link to={LOGIN_PATH} className="button is-light">
-            Log in
-          </Link>
-        </div>
-      </div>
+      {loggedIn? renderUserLinks() : renderGuestLinks()}
     </div>
   </div>
 </nav>
         </>
     )
 }
+

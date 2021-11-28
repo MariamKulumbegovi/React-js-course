@@ -15,10 +15,8 @@ export const Routes=()=>{
             <Route path={route.HOME_PATH} component={HomePage} exact />
             <Route path={route.LOGIN_PATH} component={Login} />
             <Route path={route.REGISTER_PATH} component={Register} />
-            <Route path={route.PROTECTED_PAGE_PATH}  >
-                <SecureComponent>
-                    <ProtectedPage/>
-                </SecureComponent>
+            <Route path={route.PROTECTED_PAGE_PATH}>
+                <SecureComponent Component={ProtectedPage} />
             </Route>
             
         </Switch>

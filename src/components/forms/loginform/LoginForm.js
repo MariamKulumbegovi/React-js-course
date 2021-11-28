@@ -1,19 +1,19 @@
 
-import {useState } from "react"
-import { useHistory } from "react-router"
-import { PROTECTED_PAGE_PATH } from "../../../constants/routes"
 import { EmailInput } from "../../atoms"
 import { PasswordInput } from "../../atoms"
 import styles from './LoginForm.module.css'
-
+import { useAuthContext } from "../../../providers/authprovider/AuthProvider"
 
 
 export const LoginForm=()=> {
-    const history=useHistory()
+  
+    const {logIn}=useAuthContext()
 
-    const [value,setValue]=useState("")
    
-   console.log(value)
+
+//     const [value,setValue]=useState("")
+   
+//    console.log(value)
     const onSubmit=(event)=>{
         event.preventDefault()
 
@@ -27,20 +27,20 @@ export const LoginForm=()=> {
      }   
      console.log(loginData)
      
-     fetch(`${process.env.REACT_APP_API_URL}/login`,{
-         method:"POST",
-         headers:{
-             "Content-type":"application/json",
-             Accept:"application/json"
-         },
-         body: JSON.stringify(loginData)
-     }).then((res)=>res.json())
-    .then((response)=>
-        {if(response.token){
-            history.replace(PROTECTED_PAGE_PATH)
-        }})
-    .catch((error)=>{
-        console.error(error)
+    fetch(`${process.env.REACT_APP_API_URL}/login`, {
+        method:"POST",
+        headers: {
+            "Content-type":"application/json",
+            Accept:"application/json"
+        },
+        body: JSON.stringify(loginData),
+    })
+    .then((res=>res.json()))
+    .then((response)=>{
+        if(response.token){
+          logIn(response.token)
+         
+        }
     })
 
     }

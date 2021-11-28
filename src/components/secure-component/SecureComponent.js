@@ -1,9 +1,12 @@
+import { useContext } from "react"
 import { Redirect } from "react-router"
-import { HOME_PATH } from "../../constants/routes"
+import { HOME_PATH, LOGIN_PATH} from "../../constants/routes"
+import { AuthContext } from "../../providers/authprovider/AuthProvider"
 
 
-export const SecureComponent=({children})=>{
+export const SecureComponent=({Component, ...props})=>{
 
-    let loggedIn=false
-    return loggedIn?  children : <Redirect to={HOME_PATH}/>
+    const {loggedIn}=useContext(AuthContext)
+       
+    return loggedIn?  <Component {...props} /> : <Redirect to={LOGIN_PATH}/>
 }
