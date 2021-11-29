@@ -1,13 +1,20 @@
-import Background from './Background';
-import Statement from './Statement'
+
 import './App.css';
-import './reset.css'
+import { Header } from './components/layout/header/Header';
+import { Routes } from './Routes';
+
+
 
 function App() {
   return (
-    <div className="App">
-        <Background/>
-        <Statement/>
+    <div className="content heightfull">
+    
+        <Header/>
+      <div className="mt40">
+      <Routes/>
+      </div>
+      
+        
     </div>
   );
 }

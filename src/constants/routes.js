@@ -1,0 +1,5 @@
+export const HOME_PATH="/"
+export const PROTECTED_PAGE_PATH="/protectedpage"
+export const LOGIN_PATH="/login"
+export const REGISTER_PATH="/register"
+export const STARRY_NIGHT_PATH="/starrynight"

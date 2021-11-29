@@ -1,6 +1,6 @@
 import './Background.css'
 
-function Background() {
+export const  Background=() =>{
 
     return (
         <div className="stars">
@@ -11,4 +11,3 @@ function Background() {
     )
 }
 
-export default Background;
