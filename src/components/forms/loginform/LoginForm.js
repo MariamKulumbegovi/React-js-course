@@ -1,66 +1,51 @@
+import { EmailInput } from '../../atoms';
+import { PasswordInput } from '../../atoms';
+import styles from './LoginForm.module.css';
+import { useAuthContext } from '../../../providers/authprovider/AuthProvider';
 
-import { EmailInput } from "../../atoms"
-import { PasswordInput } from "../../atoms"
-import styles from './LoginForm.module.css'
-import { useAuthContext } from "../../../providers/authprovider/AuthProvider"
+export const LoginForm = () => {
+  const { logIn } = useAuthContext();
 
+  //     const [value,setValue]=useState("")
 
-export const LoginForm=()=> {
-  
-    const {logIn}=useAuthContext()
+  //    console.log(value)
+  const onSubmit = event => {
+    event.preventDefault();
 
-   
-
-//     const [value,setValue]=useState("")
-   
-//    console.log(value)
-    const onSubmit=(event)=>{
-        event.preventDefault()
-
-        
-     const fd= new FormData(event.target)
-     const loginData={}
-     for (let [InputName,value] of fd.entries() ){
-
-        loginData[InputName]=value
-
-     }   
-     console.log(loginData)
-     
-    fetch(`${process.env.REACT_APP_API_URL}/login`, {
-        method:"POST",
-        headers: {
-            "Content-type":"application/json",
-            Accept:"application/json"
-        },
-        body: JSON.stringify(loginData),
-    })
-    .then((res=>res.json()))
-    .then((response)=>{
-        if(response.token){
-          logIn(response.token)
-         
-        }
-    })
-
+    const fd = new FormData(event.target);
+    const loginData = {};
+    for (let [InputName, value] of fd.entries()) {
+      loginData[InputName] = value;
     }
+    console.log(loginData);
 
-    
-    return (
-        <div className={styles.mt50}>
-            <form onSubmit={onSubmit}>
-                <code> 
-                "email": "eve.holt@reqres.in",
-                "password": "cityslicka"
+    fetch(`${process.env.REACT_APP_API_URL}/login`, {
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json',
+        Accept: 'application/json',
+      },
+      body: JSON.stringify(loginData),
+    })
+      .then(res => res.json())
+      .then(response => {
+        if (response.token) {
+          logIn(response.token);
+        }
+      });
+  };
 
-                </code>
-                <div className="field">
-                <EmailInput/>
-                </div>
-                <div className="field">
-                <PasswordInput/>
-                </div>
-                {/* <div className="control">
+  return (
+    <div className={styles.mt50}>
+      <form onSubmit={onSubmit}>
+        <code>"email": "eve.holt@reqres.in", "password": "cityslicka"</code>
+        <div className="field">
+          <EmailInput />
+        </div>
+        <div className="field">
+          <PasswordInput />
+        </div>
+        {/* <div className="control">
                 <label htmlFor="marital status" className="label">Choose your marital status</label>
                 <div className="select">
                     <select name="marital status" value={value} onChange={({target})=>setValue(target.value)} >
@@ -70,14 +55,14 @@ export const LoginForm=()=> {
                     </select>
                     </div>
                 </div> */}
-                <div className={`field ${styles[`mt30`]}`}>
-                <p className="control">
-                    <button className="button is-success" type="submit">
-                    Login
-                    </button>
-                </p>
-                </div>
-            </form>
+        <div className={`field ${styles[`mt30`]}`}>
+          <p className="control">
+            <button className="button is-success" type="submit">
+              Login
+            </button>
+          </p>
         </div>
-    )
-}
+      </form>
+    </div>
+  );
+};
