@@ -1,8 +1,10 @@
-import { useState } from 'react';
+
 import PropTypes from 'prop-types';
 import CounterTitle from './CounterTitle';
+import { useLocalStorage } from '../../hooks/useLocalStorage';
 export const Counter = ({ initialValue }) => {
-  const [count, setCount] = useState(initialValue);
+  const [count, setCount] = useLocalStorage("CounterValue",initialValue);
+  
 
   const addNumber = () => {
     setCount(count + 1);
@@ -12,13 +14,16 @@ export const Counter = ({ initialValue }) => {
   };
   const reset = () => {
     setCount(0);
+   
   };
+  
   const handleClick = value => {
     setCount(value + count);
   };
 
   return (
     <div className="container">
+   
       <div className="is-flex is-align-items-center is-justify-content-space-around ">
         <CounterTitle/>
         <div>
