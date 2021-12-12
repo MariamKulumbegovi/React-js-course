@@ -8,7 +8,7 @@ export const ProtectedPage = () => {
   const [items, setItems] = useState([]);
   const [pageCount, setPageCount] = useState(0);
 
-  let limit = 3;
+  let limit = 3
 
   useEffect(() => {
     const getUserList = async () => {

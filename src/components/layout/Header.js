@@ -1,3 +1,4 @@
+import { Navbar,Container,NavDropdown,Nav} from 'react-bootstrap';
 import { Link, NavLink } from 'react-router-dom';
 import {
   HOME_PATH,
@@ -38,9 +39,9 @@ export const Header = () => {
 
   return (
     <>
-      <nav className="navbar" role="navigation" aria-label="main navigation">
-        <div className="navbar-brand">
-          <Link className="navbar-item" to="https://bulma.io">
+      {/* <nav className="navbar" role="navigation" aria-label="main navigation">
+        <div className="navbar-brand"> */}
+          {/* <Link className="navbar-item" to="https://bulma.io">
             <img
               src="https://bulma.io/images/bulma-logo.png"
               width="112"
@@ -92,13 +93,38 @@ export const Header = () => {
                 </NavLink>
               </div>
             </div>
-          </div>
+          </div> */}
+          <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+            <Container fluid>
+            <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
+            <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+            <Navbar.Collapse id="responsive-navbar-nav">
+              <Nav className="me-auto">
+                <Nav.Link href={HOME_PATH}>Home</Nav.Link>
+                <Nav.Link href={PROTECTED_PAGE_PATH}>Protected Page</Nav.Link>
+                <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
+                  <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
+                  <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
+                  <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+                  <NavDropdown.Divider />
+                  <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
+                </NavDropdown>
+              </Nav>
+              <Nav>
+                
+                <Nav.Link eventKey={2} href="#memes">
+                {loggedIn ? renderUserLinks() : renderGuestLinks()}
+                </Nav.Link>
+              </Nav>
+            </Navbar.Collapse>
+            </Container>
+          </Navbar>
 
-          <div className="navbar-end">
+          {/* <div className="navbar-end">
             {loggedIn ? renderUserLinks() : renderGuestLinks()}
           </div>
         </div>
-      </nav>
+      </nav> */}
     </>
   );
 };
